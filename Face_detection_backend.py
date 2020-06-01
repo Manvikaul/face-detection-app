@@ -22,7 +22,7 @@ def faceDetect(img):
         img=cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0))
         
     #save file
-    path_file=('static/%s.jpg' %uuid.uuid4.hex)
+    path_file=('static/%s.jpg' %uuid.uuid4().hex)
     cv2.imwrite(path_file,img)
     return json.dumps(path_file) #returns image file name
 
@@ -30,7 +30,7 @@ def faceDetect(img):
 app=Flask(__name__)
 
 #route http post to this method
-@app.route('/api/upload',method=['POST'])
+@app.route('/api/upload',methods=['POST'])
 
 def upload():
     #retrieve image from client
